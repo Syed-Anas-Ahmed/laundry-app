@@ -3,9 +3,11 @@ import {
   StyleSheet,
   Text,
   ToastAndroid,
+  View
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import * as Location from "expo-location";
+import { Ionicons } from '@expo/vector-icons';
 
 const HomeScreen = () => {
   const [displayCurrentAddress, setDisplayCurrentAddress] = useState(
@@ -59,17 +61,30 @@ const HomeScreen = () => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <Text>{displayCurrentAddress}</Text>
+      <View style={styles.content}>
+        <Ionicons name="location" size={24} color="red" style={styles.icon} />
+        <Text style={styles.text}>{displayCurrentAddress}</Text>
+      </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  content: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  icon: {
+    marginRight: 5,
+  },
+  text: {
+    marginLeft: 5,
   },
 });
 
