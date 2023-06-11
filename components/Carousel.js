@@ -5,7 +5,6 @@ import { images } from '../data/CarouselData'
 
 export default function Carousel() {
   return (
-    <View>
       <SliderBox
       
       images={images}
@@ -14,10 +13,11 @@ export default function Carousel() {
       dotColor={'black'}
       inactiveDotColor="red"
       ImageComponentStyle={{
+        marginTop:10,
         borderRadius:6,
+        width:"95%"
       }}
       />
-    </View>
   )
 }
 

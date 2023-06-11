@@ -90,9 +90,8 @@ const HomeScreen = () => {
         </View>
       </View>
 
-      <View style={styles.carouselContainer}>
       <Carousel/>
-      </View>
+
 
 
       
@@ -152,10 +151,6 @@ const styles = StyleSheet.create({
     borderColor: "lightgrey",
     justifyContent: "space-between",
   },
-  carouselContainer:{
-    marginLeft:7,
-    marginRight:7,
-  }
 });
 
 export default HomeScreen;
