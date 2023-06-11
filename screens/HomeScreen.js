@@ -1,9 +1,12 @@
 import {
+    Pressable,
+    Image,
   SafeAreaView,
   StyleSheet,
   Text,
   ToastAndroid,
-  View
+  View,
+  TextInput
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import * as Location from "expo-location";
@@ -60,32 +63,57 @@ const HomeScreen = () => {
     }
   };
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={{marginTop:30}}>
       <View style={styles.content}>
-        <Ionicons name="location" size={24} color="red" style={styles.icon} />
-        <Text style={styles.text}>{displayCurrentAddress}</Text>
+        <Ionicons name="location" size={30} color="red"/>
+        <View>
+        <Text style={styles.homeHeading}>Home</Text>
+        <Text>{displayCurrentAddress}</Text>
+        </View>
+
+
+      <Pressable style={styles.imageCont}>
+        <Image style={styles.image} source={{
+            uri:"https://lh3.googleusercontent.com/ogw/AOLn63EF9d08rDiCEJvTEnBrhyvmZgXxXnxQV4fC1P6EeuA=s32-c-mo"}}/>
+      </Pressable>
       </View>
+
+<View style={styles.searchBar}>
+    <TextInput placeholder="Search for Items"></TextInput>
+    <Ionicons name="search" size={24} color="#797979" />
+</View>
+
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
   content: {
+    padding: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
   },
-  icon: {
-    marginRight: 5,
+  homeHeading: {
+    fontSize: 18,
+    fontWeight: "700"
   },
-  text: {
-    marginLeft: 5,
+  image:{
+    width: 40,
+    height: 40,
+    borderRadius: 25
   },
+  imageCont:{
+    marginLeft: "auto"
+  },
+  searchBar:{
+    flexDirection: 'row',
+    margin: 5,
+    padding: 5,
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: "#b5b5b5",
+    justifyContent: 'space-between'
+  }
 });
 
 export default HomeScreen;
