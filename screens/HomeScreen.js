@@ -1,16 +1,18 @@
 import {
-    Pressable,
-    Image,
+  Pressable,
+  Image,
   SafeAreaView,
   StyleSheet,
   Text,
   ToastAndroid,
   View,
-  TextInput
+  TextInput,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import * as Location from "expo-location";
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from "@expo/vector-icons";
+import Carousel from "../components/Carousel";
+import { Dimensions } from "react-native";
 
 const HomeScreen = () => {
   const [displayCurrentAddress, setDisplayCurrentAddress] = useState(
@@ -39,9 +41,7 @@ const HomeScreen = () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
 
     if (status !== "granted") {
-      ToastAndroid.show(
-        "Location Services are not enabled",
-      );
+      ToastAndroid.show("Location Services are not enabled");
     }
 
     const { coords } = await Location.getCurrentPositionAsync();
@@ -63,56 +63,98 @@ const HomeScreen = () => {
     }
   };
   return (
-    <SafeAreaView style={{marginTop:30}}>
+    <SafeAreaView style={styles.SafeAreaView}>
       <View style={styles.content}>
-        <Ionicons name="location" size={30} color="red"/>
+        <Ionicons name="location" size={30} color="red" />
         <View>
-        <Text style={styles.homeHeading}>Home</Text>
-        <Text>{displayCurrentAddress}</Text>
+          <Text style={styles.homeHeading}>Home</Text>
+          <Text>{displayCurrentAddress}</Text>
         </View>
 
+        <Pressable style={styles.imageCont}>
+          <Image
+            style={styles.image}
+            source={{
+              uri: "https://lh3.googleusercontent.com/ogw/AOLn63EF9d08rDiCEJvTEnBrhyvmZgXxXnxQV4fC1P6EeuA=s32-c-mo",
+            }}
+          />
+        </Pressable>
 
-      <Pressable style={styles.imageCont}>
-        <Image style={styles.image} source={{
-            uri:"https://lh3.googleusercontent.com/ogw/AOLn63EF9d08rDiCEJvTEnBrhyvmZgXxXnxQV4fC1P6EeuA=s32-c-mo"}}/>
-      </Pressable>
+
       </View>
 
-<View style={styles.searchBar}>
-    <TextInput placeholder="Search for Items"></TextInput>
-    <Ionicons name="search" size={24} color="#797979" />
-</View>
+      <View style={styles.searchContainer}>
+        <View  style={styles.searchField}>
+        <TextInput placeholder="Search for Items"></TextInput>
+        <Ionicons name="search" size={24} color="#797979" />
+        </View>
+      </View>
+
+      <View style={styles.carouselContainer}>
+      <Carousel/>
+      </View>
+
+
+      
+
 
     </SafeAreaView>
   );
 };
 
+//const {width}=Dimensions.get("window");
+
 const styles = StyleSheet.create({
+  SafeAreaView: {
+    marginTop: 40,
+  },
   content: {
+    backgroundColor: "#ffff",
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
     padding: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
+    marginLeft: 7,
+    marginRight: 7,
+    flexDirection: "row",
+    alignItems: "center",
+    
   },
   homeHeading: {
     fontSize: 18,
-    fontWeight: "700"
+    fontWeight: "700",
   },
-  image:{
+  image: {
     width: 40,
     height: 40,
-    borderRadius: 25
+    borderRadius: 25,
   },
-  imageCont:{
-    marginLeft: "auto"
+  imageCont: {
+    marginLeft: "auto",
   },
-  searchBar:{
-    flexDirection: 'row',
-    margin: 5,
-    padding: 5,
-    borderWidth: 1,
-    borderRadius: 10,
+  searchContainer: {
+    flexDirection: "row",
+    borderBottomRightRadius: 10,
+    borderBottomLeftRadius: 10,
     borderColor: "#b5b5b5",
-    justifyContent: 'space-between'
+    backgroundColor: "#ffff",
+    justifyContent: "space-between",
+    padding: 15,
+    marginLeft: 7,
+    marginRight: 7,
+    alignItems: "center",
+  },
+  searchField:{
+    flexDirection: "row",
+    width:"100%",
+    borderRadius: 10,
+    borderWidth: 1,
+    padding:7,
+    borderColor: "lightgrey",
+    justifyContent: "space-between",
+  },
+  carouselContainer:{
+    marginLeft:7,
+    marginRight:7,
   }
 });
 
