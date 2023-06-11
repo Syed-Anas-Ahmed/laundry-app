@@ -12,7 +12,10 @@ import React, { useEffect, useState } from "react";
 import * as Location from "expo-location";
 import { Ionicons } from "@expo/vector-icons";
 import Carousel from "../components/Carousel";
-import { Dimensions } from "react-native";
+import ServicesComp from "../components/ServicesComp";
+import { services } from "../data/Products";
+import ProductComp from "../components/ProductComp";
+
 
 const HomeScreen = () => {
   const [displayCurrentAddress, setDisplayCurrentAddress] = useState(
@@ -92,9 +95,9 @@ const HomeScreen = () => {
 
       <Carousel/>
 
+      <ServicesComp/>
 
-
-      
+      <ProductComp/>
 
 
     </SafeAreaView>
@@ -151,6 +154,7 @@ const styles = StyleSheet.create({
     borderColor: "lightgrey",
     justifyContent: "space-between",
   },
+
 });
 
 export default HomeScreen;
