@@ -1,6 +1,6 @@
 export const Products = [
     {
-      id: "0",
+      id: "10",
       image: "https://cdn-icons-png.flaticon.com/128/4643/4643574.png",
       name: "shirt",
       quantity: 0,

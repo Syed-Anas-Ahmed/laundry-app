@@ -4,11 +4,9 @@ import { Products } from "../data/Products";
 
 const ProductComp = () => {
   return (
-
     <ScrollView
       contentContainerStyle={styles.container}
-      vertical
-      persistentScrollbar={true}       
+      vertical      
     >
       {Products.map((item) => (
         <View style={styles.card} key={item.id}>
@@ -19,14 +17,12 @@ const ProductComp = () => {
           <Text style={styles.name}>{item.name}</Text>
           <Text style={styles.name}>${item.price}</Text>
           </View>
-          <View style={styles.btn}>
-          <Button title='Add'></Button>
+          <View style={styles.btnCont}>
+          <Button style={styles.btn} title='Add'></Button>
           </View>
         </View>
       ))}
-
     </ScrollView>
-
   )
 }
 
@@ -34,22 +30,12 @@ export default ProductComp
 
 
 const styles = StyleSheet.create({
-  scrollCont:{
-    marginTop:10,
-    padding:5,
-    backgroundColor:"black",
-    marginHorizontal:7,
-    alignItems:"center",
-    borderRadius:10,
-  },
-  heading:{
-    fontSize: 24,
-    fontWeight: '600'
-  },
   container:{
     borderRadius:10,
     marginHorizontal:7,
     marginTop:10,
+    paddingBottom:10,
+    justifyContent:'space-between'
   },  
   card:{
     backgroundColor:"#ffff",
@@ -75,10 +61,12 @@ const styles = StyleSheet.create({
     marginLeft:15,
     flex:1,
     alignItems:'flex-start',
-    //backgroundColor:'red'
+  },
+  btnCont:{
+    flex:0.3,
+    marginRight:7,
   },
   btn:{
-    flex:0.3,
-    marginRight:7
+    borderRadius:10
   }
 });
